@@ -3,7 +3,9 @@ date_every = ''
 numbers = '1234567890'
 x = '-'
 
+#создаем строку, в ней наш текст
 string_with_dates = "entriesareduebyJan1452-25-16uary4440-15-254th201at8:00pmreated2005-10-15byACMEInc.andassoci1425-12-15ates"
+#прокручиваем текст через каждый символ, ипроверяем посимвольно на формат нашей даты, записавая все в строку date_every. Если нессответствие, то сбрасываем строку и идем дальше. Если все хорошо, то добавляем дату в список (к примеру)
 for i in string_with_dates:
     if i in numbers or i == x:
         date_every += i
@@ -15,4 +17,4 @@ for i in string_with_dates:
     and date_every[8] in numbers and date_every[9] in numbers:
             scrolls.append(date_every)
             date_every = ''
-print(scrolls)
+print(scrolls) #выводим список с датами (варианты вывода могут быть разными)
