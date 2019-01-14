@@ -10,7 +10,6 @@ class BaseClient(object):
         self.endpoint = endpoint
         self.path = path
 
-
 class OkexBaseClient(BaseClient):
     
     def __init__(self, endpoint, path):
