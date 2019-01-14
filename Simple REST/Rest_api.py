@@ -1,7 +1,6 @@
 import requests
 
 # PATH_TRADES = "trades.do"
-# PATH_CANDLES = "kline.do"
 # symbol = ltc_btc, etc_btc
 # type = 1min/3min/5min/15min/30min/1day/1week/1hour/2hour/4hour/6hour/12hour
 
