@@ -1,0 +1,58 @@
+#!/usr/bin/env python3
+
+import sys
+import argparse
+import os
+
+# Create parser and arguments for reading a command line
+def createParser():
+
+    parser = argparse.ArgumentParser(description='This programm counts number of strings,\
+    number of words and number of bytes in one or some files.')
+    parser.add_argument ('-l', action='store_const', const=True, help='a flag for counting number of strings in files')
+    parser.add_argument ('-w', action='store_const', const=True, help='a flag for counting number of words in files')
+    parser.add_argument ('-c', action='store_const', const=True, help='a flag for counting number of bytes in files')
+    parser.add_argument ('f', type=argparse.FileType('r'), nargs='*', help='allow to write names of files. If that argument\
+    doesn\'t present data will send to stdin')
+ 
+    return parser
+
+if __name__ == '__main__':
+    parser = createParser()
+    namespace = parser.parse_args(sys.argv[1:])
+
+# work with stdin or fileinput
+if namespace.f == []:
+    file = sys.stdin.read()
+    # if we want to consider last string as string when "\n is missed in the end of a file"
+    # if file[-1] != '\n':
+    #   l = 1  (and we must change to "l += " in the lower line)
+    l = sum(1 for sym in file if sym == '\n')
+    w = len(file.split())
+    file.encode()
+    c = len(file)
+else:
+    l = 0
+    w = 0
+    c = 0
+    for index in namespace.f:
+        file = index
+        file = file.read()
+        # if we want to consider last string as string when "\n is missed in the end of a file"
+        # if file[-1] != '\n':
+        #   l += 1  
+        l += sum(1 for sym in file if sym == '\n')
+        w += len(file.split())
+        file.encode()
+        c += len(file)
+
+# get a result according flags
+if namespace.l == None and namespace.w == None and namespace.c == None:
+    print(str(l), str(w), str(c), sep=' ')
+else:
+    if namespace.l:
+        print(str(l))
+    if namespace.w:
+        print(str(w))
+    if namespace.c:
+        print(str(c))
