@@ -10,23 +10,25 @@ def mergeSort(array):
 
         i=0
         j=0
-        k=0
+        index_new_array=0
         while i<len(lefthalf) and j<len(righthalf):
             if lefthalf[i]<righthalf[j]:
-                array[k]=lefthalf[i]
+                array[index_new_array]=lefthalf[i]
                 i=i+1
             else:
-                array[k]=righthalf[j]
+                array[index_new_array]=righthalf[j]
                 j=j+1
-            k=k+1
+            index_new_array=index_new_array+1
 
         while i<len(lefthalf):
-            array[k]=lefthalf[i]
+            array[index_new_array]=lefthalf[i]
             i=i+1
-            k=k+1
+            index_new_array=index_new_array+1
 
         while j<len(righthalf):
-            array[k]=righthalf[j]
+            array[index_new_array]=righthalf[j]
             j=j+1
-            k=k+1
-        
+            index_new_array=index_new_array+1
+    
+    return array
+     
